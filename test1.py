@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 # 1. ضع رابط OneDrive الذي نسخته هنا بين القوسين
-ONEDRIVE_LINK = "https://canalsugar-my.sharepoint.com/:x:/p/ahmed_abdelnasser/IQCD4iKMpGrzTp1bFDSLhuoKAelM4hshFAHAJDs325VsKJA?email=AYA.HASSAN%40CANALSUGAR.COM&e=XJgegV"
+ONEDRIVE_LINK = "https://canalsugar-my.sharepoint.com/:x:/r/personal/ahmed_abdelnasser_canalsugar_com/Documents/06-%20Season%202025%20-%202026/Beet_Project/scripts/all_data.xlsx?d=w8c22e2836aa44ef39d5b14348b86ea0a&csf=1&web=1&e=B6jNu5"
 
 @st.cache_data
 def load_data_from_onedrive(url):
@@ -80,3 +80,4 @@ try:
 
 except Exception as e:
     st.error(f"⚠️ فشل الاتصال بالملف: تأكد من رابط المشاركة. الخطأ: {e}")
+
