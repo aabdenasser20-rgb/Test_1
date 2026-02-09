@@ -61,7 +61,7 @@ if df_raw is not None:
     st.title("📊 لوحة تحكم إنتاجية بنجر السكر - 2025/2026")
     
     m1, m2, m3 = st.columns(3)
-    total_tons = df['ن المتوقع توريده'].sum()
+    total_tons = df['الطن المتوقع توريده'].sum()
     total_feddans = df['المساحة'].sum()
     avg_yield = total_tons / total_feddans if total_feddans > 0 else 0
     
@@ -76,15 +76,15 @@ if df_raw is not None:
 
     with row1_col1:
         st.subheader("الأطنان حسب المنطقة (Tons by Area)")
-        area_data = df.groupby('المنطقة')['ن المتوقع توريده'].sum().reset_index()
+        area_data = df.groupby('المنطقة')['الطن المتوقع توريده'].sum().reset_index()
         fig_area = px.bar(area_data, x='المنطقة', y='ن المتوقع توريده', 
                           color_discrete_sequence=['#5A9E3F'], text_auto='.2s')
         st.plotly_chart(fig_area, use_container_width=True)
 
     with row1_col2:
         st.subheader("توزيع الأطنان حسب العروة")
-        erwa_data = df.groupby('العروة')['ن المتوقع توريده'].sum().reset_index()
-        fig_pie = px.pie(erwa_data, values='ن المتوقع توريده', names='العروة', 
+        erwa_data = df.groupby('العروة')['الطن المتوقع توريده'].sum().reset_index()
+        fig_pie = px.pie(erwa_data, values='الطن المتوقع توريده', names='العروة', 
                          hole=0.4, color_discrete_sequence=px.colors.qualitative.Set1)
         st.plotly_chart(fig_pie, use_container_width=True)
 
@@ -98,13 +98,13 @@ if df_raw is not None:
             'ن المتوقع توريده': 'sum',
             'المساحة': 'sum'
         }).reset_index()
-        table_data['Average'] = (table_data['ن المتوقع توريده'] / table_data['المساحة']).round(1)
+        table_data['Average'] = (table_data['الطن المتوقع توريده'] / table_data['المساحة']).round(1)
         st.dataframe(table_data, use_container_width=True, hide_index=True)
 
     with row2_col2:
         st.subheader("أعلى المهندسين إنتاجية (Tons by Engineer)")
-        eng_data = df.groupby('اسم المهندس')['ن المتوقع توريده'].sum().sort_values(ascending=True).reset_index().tail(15)
-        fig_eng = px.bar(eng_data, x='ن المتوقع توريده', y='اسم المهندس', 
+        eng_data = df.groupby('اسم المهندس')['الطن المتوقع توريده'].sum().sort_values(ascending=True).reset_index().tail(15)
+        fig_eng = px.bar(eng_data, x='الطن المتوقع توريده', y='اسم المهندس', 
                          orientation='h', color_discrete_sequence=['#2E7D32'], text_auto='.2s')
         st.plotly_chart(fig_eng, use_container_width=True)
 
@@ -115,3 +115,4 @@ else:
     if uploaded_file:
         df_raw = pd.read_excel(uploaded_file)
         st.rerun()
+
